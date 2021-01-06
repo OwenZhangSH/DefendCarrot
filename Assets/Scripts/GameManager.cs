@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     // Game Controller 控制游戏逻辑
     public GameController gameController;
 
+    private CareTaker ct;
     public bool initPlayerManager;//是否重置游戏
 
     private void Awake()
@@ -36,21 +37,39 @@ public class GameManager : MonoBehaviour
         _instance = this;
         // 管理器初始化
         // 从存档中提取memento
-        CareTaker ct = new CareTaker();
+        ct = new CareTaker();
         if (initPlayerManager)
             ct.SetMementoFromFile(StringManager.playerManagerInitDataFilePath);
         else
             ct.SetMementoFromFile(StringManager.playerManagerDataFilePath);
         playerManager = new PlayerManager();
+        //playerManager.InitPlayerManager();
+        //ct.SaveMementoToFile(playerManager.createMemento());
         playerManager.SetMemento(ct.GetMemento());
         assetManager = new AssetManager();
         audioManager = new AudioManager();
         uiManager = new UIManager();
+        uiManager.currentSceneState.EnterScene();
     }
 
     public GameObject CreateItem(GameObject go)
     {
-        GameObject go = Instantiate(itemGo);
-        return go;
+        GameObject itemGo = Instantiate(go);
+        return itemGo;
+    }
+
+    public GameObject GetGameObjectResource(FactoryType type, string name)
+    {
+        return assetManager.factoryDict[type].GetItem(name);
+    }
+
+    public void PushGameObjectToFactory(FactoryType type, string name, GameObject go)
+    {
+        assetManager.factoryDict[type].PushItem(name, go);
+    }
+
+    public void SaveData()
+    {
+        ct.SaveMementoToFile();
     }
 }

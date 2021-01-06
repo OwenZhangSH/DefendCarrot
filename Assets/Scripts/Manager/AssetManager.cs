@@ -7,5 +7,12 @@ using UnityEngine;
 /// </summary>
 public class AssetManager
 {
-    
+    public Dictionary<FactoryType, IBaseFacotry> factoryDict = new Dictionary<FactoryType, IBaseFacotry>();
+
+    public AssetManager()
+    {
+        factoryDict.Add(FactoryType.UIPanelFactory, new UIPanelFactory());
+        factoryDict.Add(FactoryType.UIFactory, new UIFactory());
+        factoryDict.Add(FactoryType.GameFactory, new GameFactory());
+    }
 }

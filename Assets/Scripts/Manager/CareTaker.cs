@@ -38,4 +38,22 @@ public class CareTaker
             SetMemento(playerManager.createMemento());
         }
     }
+
+    public void SaveMementoToFile()
+    {
+        PlayerManager playerManager = memento.GetPlayerManager();
+        string saveJson = JsonMapper.ToJson(playerManager);
+        StreamWriter sw = new StreamWriter(StringManager.playerManagerDataFilePath);
+        sw.Write(saveJson);
+        sw.Close();
+    }
+
+    public void SaveMementoToFile(Memento memento)
+    {
+        PlayerManager playerManager = memento.GetPlayerManager();
+        string saveJson = JsonMapper.ToJson(playerManager);
+        StreamWriter sw = new StreamWriter(StringManager.playerManagerDataFilePath);
+        sw.Write(saveJson);
+        sw.Close();
+    }
 }

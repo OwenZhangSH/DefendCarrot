@@ -54,4 +54,40 @@ public class PlayerManager
         unlockedeNormalModeMapNum = playerManager.unlockedeNormalModeMapNum;
         monsterPetDataList = playerManager.monsterPetDataList;
     }
+
+    //用于玩家初始Json文件的制作
+    public void InitPlayerManager()
+    {
+        normalModeLevelNum = 0;
+        burriedLevelNum = 0;
+        bossModeNum = 0;
+        coin = 0;
+        killedMonsterNum = 0;
+        killedBossNum = 0;
+        clearItemNum = 0;
+        cookies = 100;
+        milk = 100;
+        nest = 1;
+        diamands = 10;
+        unlockedeNormalModeMapNum = new List<int>()
+        {
+            1,0,0
+        };
+        unlockedNormalModeLevelList = new List<bool>()
+        {
+            true,false,false
+        };
+        unlockedNormalModeMapList = new List<Map>();
+        monsterPetDataList = new List<MonsterPetData>()
+        {
+            new MonsterPetData()
+            {
+                monsterID=1,
+                monsterLevel=1,
+                remainCookies=0,
+                remainMilk=0
+            },
+
+        };
+    }
 }

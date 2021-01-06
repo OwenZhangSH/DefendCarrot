@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 /// <summary>
 /// 管理UIpanel的展示
@@ -24,6 +25,7 @@ public class UIManager
         currentScenePanelDict = new Dictionary<string, GameObject>();
         // 初始化遮罩作为场景切换的动画
         InitMask();
+        currentSceneState = new StartLoadSceneState(this);
     }
     
     // 初始化遮罩
@@ -38,26 +40,76 @@ public class UIManager
     //实例化UI
     public GameObject CreateUIAndSetUIPosition(string uiName)
     {
-        // TODO: 实例化UI
-        // GameObject itemGo = GameManager.instance.GetGameObjectResource(FactoryType.UIFactory, uiName);
-        return null;
+        GameObject itemGo = GameManager.instance.GetGameObjectResource(FactoryType.UIFactory, uiName);
+        itemGo.transform.SetParent(canvasTransform);
+        itemGo.transform.localPosition = Vector3.zero;
+        itemGo.transform.localScale = Vector3.one;
+        return itemGo;
     }
 
     //实例化当前场景所有面板，并存入字典
     public void InitDict()
     {
-        // TODO: 实例化所有面板
-        
+        foreach (var item in currentScenePanelDict)
+        {
+            item.Value.transform.SetParent(canvasTransform);
+            item.Value.transform.localPosition = Vector3.zero;
+            item.Value.transform.localScale = Vector3.one;
+            IBasePanel basePanel = item.Value.GetComponent<IBasePanel>();
+            if (basePanel == null)
+            {
+                Debug.Log("获取面板上IBasePanel脚本失败");
+            }
+            basePanel.InitPanel();
+        }
     }
 
     // 清除所有面板
     public void ClearDict()
     {
-        // TODO: 清除所有面板
+        foreach (var item in currentScenePanelDict)
+        {
+            GameManager.instance.PushGameObjectToFactory(FactoryType.UIPanelFactory, item.Key, item.Value);
+        }
+        currentScenePanelDict.Clear();
     }
 
     public void AddPanelToDict(string panelName)
     {
-        // TODO: 清除所有面板 将面板加入字典
+        currentScenePanelDict.Add(panelName, GameManager.instance.GetGameObjectResource(
+            FactoryType.UIPanelFactory, panelName));
+    }
+
+    /*
+     * 切换scene状态
+     */
+    public void ChangeSceneState(IBaseSceneState sceneState)
+    {
+        lastSceneState = currentSceneState;
+        currentSceneState = sceneState;
+        ShowMask();
+    }
+
+    //显示遮罩
+    public void ShowMask()
+    {
+        mask.transform.SetSiblingIndex(10);
+        Tween t = DOTween.To(() => maskImage.color, toColor => maskImage.color = toColor, new Color(0, 0, 0, 1), 2f);
+        t.OnComplete(ExitSceneComplete);
+    }
+
+    //离开当前场景
+    private void ExitSceneComplete()
+    {
+        lastSceneState.ExitScene();
+        currentSceneState.EnterScene();
+        HideMask();
+    }
+
+    //隐藏遮罩
+    public void HideMask()
+    {
+        mask.transform.SetSiblingIndex(10);
+        Tween t = DOTween.To(() => maskImage.color, toColor => maskImage.color = toColor, new Color(0, 0, 0, 0), 2f);
     }
 }

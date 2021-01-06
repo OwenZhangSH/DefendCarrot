@@ -14,7 +14,7 @@ public class StringManager
         + "/playerManager.json";
     public const string StartLoadPanel = "StartLoadPanel";
     public const string MainPanel = "MainPanel";
-    public const string SetPanel = "SetPanel";
+    public const string SettingPanel = "SettingPanel";
     public const string GameLoadPanel = "GameLoadPanel";
     public const string HelpPanel = "HelpPanel";
     public const string GameNormalOptionPanel = "GameNormalOptionPanel";
