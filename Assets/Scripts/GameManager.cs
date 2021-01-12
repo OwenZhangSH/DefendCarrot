@@ -72,4 +72,10 @@ public class GameManager : MonoBehaviour
     {
         ct.SaveMementoToFile();
     }
+
+    public void ResetGame()
+    {
+        ct.SetMementoFromFile(StringManager.playerManagerInitDataFilePath);
+        playerManager.SetMemento(ct.GetMemento());
+    }
 }

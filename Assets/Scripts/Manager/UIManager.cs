@@ -19,8 +19,13 @@ public class UIManager
     public IBaseSceneState currentSceneState;
     public IBaseSceneState lastSceneState;
     // 构造函数
+
+    // 上层透传参数
+    public PlayerManager playerManager;
     public UIManager()
     {
+        // 初始化变量
+        playerManager = GameManager.instance.playerManager;
         // 创建空的字典
         currentScenePanelDict = new Dictionary<string, GameObject>();
         // 初始化遮罩作为场景切换的动画
@@ -112,4 +117,31 @@ public class UIManager
         mask.transform.SetSiblingIndex(10);
         Tween t = DOTween.To(() => maskImage.color, toColor => maskImage.color = toColor, new Color(0, 0, 0, 0), 2f);
     }
+
+    /// <summary>
+    /// 音乐控制
+    /// </summary>
+    //开关音乐
+    public void CloseOrOpenBGMusic()
+    {
+        GameManager.instance.audioManager.CloseOrOpenBGMusic();
+    }
+
+    public void CloseOrOpenEffectMusic()
+    {
+        GameManager.instance.audioManager.CloseOrOpenEffectMusic();
+    }
+
+    //播放按钮音效
+    public void PlayButtonAudioClip()
+    {
+        GameManager.instance.audioManager.PlayButtonAudioClip();
+    }
+
+    //播放翻书音效
+    public void PlayPagingAudioClip()
+    {
+        GameManager.instance.audioManager.PlayPagingAudioClip();
+    }
+
 }

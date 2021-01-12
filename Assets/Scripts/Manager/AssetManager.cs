@@ -8,11 +8,13 @@ using UnityEngine;
 public class AssetManager
 {
     public Dictionary<FactoryType, IBaseFacotry> factoryDict = new Dictionary<FactoryType, IBaseFacotry>();
+    public AudioClipsFactory audioClipsFactory;
 
     public AssetManager()
     {
         factoryDict.Add(FactoryType.UIPanelFactory, new UIPanelFactory());
         factoryDict.Add(FactoryType.UIFactory, new UIFactory());
         factoryDict.Add(FactoryType.GameFactory, new GameFactory());
+        audioClipsFactory = new AudioClipsFactory();
     }
 }
