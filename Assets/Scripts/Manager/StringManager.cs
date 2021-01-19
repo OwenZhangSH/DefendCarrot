@@ -17,11 +17,13 @@ public class StringManager
     public const string SettingPanel = "SettingPanel";
     public const string GameLoadPanel = "GameLoadPanel";
     public const string HelpPanel = "HelpPanel";
-    public const string GameNormalOptionPanel = "GameNormalOptionPanel";
-    public const string GameNormalBigLevelPanel = "GameNormalBigLevelPanel";
-    public const string GameNormalLevelPanel = "GameNormalLevelPanel";
+    public const string LevelSelectionPanel = "LevelSelectionPanel";
+    public const string SecendLevelSelectionPanel = "SecendLevelSelectionPanel";
+    public const string LevelResourceRoot = "GameOption/Normal/Level/";
+
     public const string GameBossOptionPanel = "GameBossOptionPanel";
-    public const string NormalModelPanel = "NormalModelPanel";
+
+    public const string NormalModePanel = "NormalModePanel";
     public const string BossModelPanel = "BossModelPanel";
     public const string MonsterNestPanel = "MonsterNestPanel";
 

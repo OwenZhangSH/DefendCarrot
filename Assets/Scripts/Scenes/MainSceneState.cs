@@ -18,8 +18,8 @@ public class MainSceneState : BaseSceneState
         // 加载panel
         uiManager.AddPanelToDict(StringManager.MainPanel);
         uiManager.AddPanelToDict(StringManager.SettingPanel);
-        //uiManager.AddPanelToDict(StringManager.HelpPanel);
-        //uiManager.AddPanelToDict(StringManager.GameLoadPanel);
+        uiManager.AddPanelToDict(StringManager.HelpPanel);
+        uiManager.AddPanelToDict(StringManager.GameLoadPanel);
         // 加载音乐
         GameManager.instance.audioManager.PlayBGMusic(
             GameManager.instance.assetManager.audioClipsFactory.GetSingleResources("Main/BGMusic"));

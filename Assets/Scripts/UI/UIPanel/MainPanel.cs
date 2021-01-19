@@ -70,7 +70,7 @@ public class MainPanel : BasePanel
         //播放点击音效
         uiManager.PlayButtonAudioClip();
         exitTween = mainPanelTweens[1];
-        //uiManager.currentScenePanelDict[StringManager.HelpPanel].GetComponent<IBasePanel>().EnterPanel();
+        uiManager.currentScenePanelDict[StringManager.HelpPanel].GetComponent<IBasePanel>().EnterPanel();
     }
     // 退出游戏回调函数
     public void ExitGame()

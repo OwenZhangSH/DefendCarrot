@@ -77,7 +77,23 @@ public class PlayerManager
         {
             true,false,false
         };
-        unlockedNormalModeMapList = new List<Map>();
+        unlockedNormalModeMapList = new List<Map>() {
+            //new Map(10,1,new int[]{1},false,0,1,1,true,false),
+            //new Map(9,1,new int[]{2},false,0,2,1,false,false),
+            //new Map(8,2,new int[]{1,2},false,0,3,1,false,false),
+            //new Map(10,1,new int[]{3},false,0,4,1,false,false),
+            //new Map(9,3,new int[]{1,2,3},false,0,5,1,false,true),
+            //new Map(8,2,new int[]{2,3},false,0,1,2,false,false),
+            //new Map(10,2,new int[]{1,3},false,0,2,2,false,false),
+            //new Map(9,1,new int[]{4},false,0,3,2,false,false),
+            //new Map(8,2,new int[]{1,4},false,0,4,2,false,false),
+            //new Map(10,2,new int[]{2,4},false,0,5,2,false,true),
+            //new Map(9,2,new int[]{3,4},false,0,1,3,false,false),
+            //new Map(8,1,new int[]{5},false,0,2,3,false,false),
+            //new Map(7,2,new int[]{4,5},false,0,3,3,false,false),
+            //new Map(10,3,new int[]{1,3,5},false,0,4,3,false,false),
+            //new Map(10,3,new int[]{1,4,5},false,0,5,3,false,true)
+        };
         monsterPetDataList = new List<MonsterPetData>()
         {
             new MonsterPetData()

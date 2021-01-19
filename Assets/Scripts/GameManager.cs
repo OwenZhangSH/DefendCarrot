@@ -58,6 +58,7 @@ public class GameManager : MonoBehaviour
         return itemGo;
     }
 
+    // AssetManager 透传方法
     public GameObject GetGameObjectResource(FactoryType type, string name)
     {
         return assetManager.factoryDict[type].GetItem(name);
@@ -68,6 +69,12 @@ public class GameManager : MonoBehaviour
         assetManager.factoryDict[type].PushItem(name, go);
     }
 
+    public Sprite GetSprite(string path)
+    {
+        return assetManager.spritesFactory.GetSingleResources(path);
+    }
+
+    // playerManager 相关方法
     public void SaveData()
     {
         ct.SaveMementoToFile();

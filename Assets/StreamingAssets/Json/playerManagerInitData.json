@@ -1,1 +1,190 @@
-{"normalModeLevelNum":0,"burriedLevelNum":0,"bossModeNum":0,"coin":0,"killedMonsterNum":0,"killedBossNum":0,"clearItemNum":0,"unlockedNormalModeLevelList":[true,false,false],"unlockedNormalModeMapList":[],"unlockedeNormalModeMapNum":[1,0,0],"cookies":100,"milk":100,"nest":1,"diamands":10,"monsterPetDataList":[{"monsterLevel":1,"remainCookies":0,"remainMilk":0,"monsterID":1}]}
+{
+  "normalModeLevelNum": 0,
+  "burriedLevelNum": 0,
+  "bossModeNum": 0,
+  "coin": 0,
+  "killedMonsterNum": 0,
+  "killedBossNum": 0,
+  "clearItemNum": 0,
+  "unlockedNormalModeLevelList": [ true, false, false ],
+  "unlockedNormalModeMapList": [
+    {
+      "towerIDList": [ 1 ],
+      "towerIDListLength": 1,
+      "isAllClear": false,
+      "carrotState": 0,
+      "mapID": 1,
+      "levelID": 1,
+      "isUnlocked": true,
+      "isRewardLevel": false,
+      "waveNum": 10
+    },
+    {
+      "towerIDList": [ 2 ],
+      "towerIDListLength": 1,
+      "isAllClear": false,
+      "carrotState": 0,
+      "mapID": 2,
+      "levelID": 1,
+      "isUnlocked": false,
+      "isRewardLevel": false,
+      "waveNum": 9
+    },
+    {
+      "towerIDList": [ 1, 2 ],
+      "towerIDListLength": 2,
+      "isAllClear": false,
+      "carrotState": 0,
+      "mapID": 3,
+      "levelID": 1,
+      "isUnlocked": false,
+      "isRewardLevel": false,
+      "waveNum": 8
+    },
+    {
+      "towerIDList": [ 3 ],
+      "towerIDListLength": 1,
+      "isAllClear": false,
+      "carrotState": 0,
+      "mapID": 4,
+      "levelID": 1,
+      "isUnlocked": false,
+      "isRewardLevel": false,
+      "waveNum": 10
+    },
+    {
+      "towerIDList": [ 1, 2, 3 ],
+      "towerIDListLength": 3,
+      "isAllClear": false,
+      "carrotState": 0,
+      "mapID": 5,
+      "levelID": 1,
+      "isUnlocked": false,
+      "isRewardLevel": true,
+      "waveNum": 9
+    },
+    {
+      "towerIDList": [ 2, 3 ],
+      "towerIDListLength": 2,
+      "isAllClear": false,
+      "carrotState": 0,
+      "mapID": 1,
+      "levelID": 2,
+      "isUnlocked": false,
+      "isRewardLevel": false,
+      "waveNum": 8
+    },
+    {
+      "towerIDList": [ 1, 3 ],
+      "towerIDListLength": 2,
+      "isAllClear": false,
+      "carrotState": 0,
+      "mapID": 2,
+      "levelID": 2,
+      "isUnlocked": false,
+      "isRewardLevel": false,
+      "waveNum": 10
+    },
+    {
+      "towerIDList": [ 4 ],
+      "towerIDListLength": 1,
+      "isAllClear": false,
+      "carrotState": 0,
+      "mapID": 3,
+      "levelID": 2,
+      "isUnlocked": false,
+      "isRewardLevel": false,
+      "waveNum": 9
+    },
+    {
+      "towerIDList": [ 1, 4 ],
+      "towerIDListLength": 2,
+      "isAllClear": false,
+      "carrotState": 0,
+      "mapID": 4,
+      "levelID": 2,
+      "isUnlocked": false,
+      "isRewardLevel": false,
+      "waveNum": 8
+    },
+    {
+      "towerIDList": [ 2, 4 ],
+      "towerIDListLength": 2,
+      "isAllClear": false,
+      "carrotState": 0,
+      "mapID": 5,
+      "levelID": 2,
+      "isUnlocked": false,
+      "isRewardLevel": true,
+      "waveNum": 10
+    },
+    {
+      "towerIDList": [ 3, 4 ],
+      "towerIDListLength": 2,
+      "isAllClear": false,
+      "carrotState": 0,
+      "mapID": 1,
+      "levelID": 3,
+      "isUnlocked": false,
+      "isRewardLevel": false,
+      "waveNum": 9
+    },
+    {
+      "towerIDList": [ 5 ],
+      "towerIDListLength": 1,
+      "isAllClear": false,
+      "carrotState": 0,
+      "mapID": 2,
+      "levelID": 3,
+      "isUnlocked": false,
+      "isRewardLevel": false,
+      "waveNum": 8
+    },
+    {
+      "towerIDList": [ 4, 5 ],
+      "towerIDListLength": 2,
+      "isAllClear": false,
+      "carrotState": 0,
+      "mapID": 3,
+      "levelID": 3,
+      "isUnlocked": false,
+      "isRewardLevel": false,
+      "waveNum": 7
+    },
+    {
+      "towerIDList": [ 1, 3, 5 ],
+      "towerIDListLength": 3,
+      "isAllClear": false,
+      "carrotState": 0,
+      "mapID": 4,
+      "levelID": 3,
+      "isUnlocked": false,
+      "isRewardLevel": false,
+      "waveNum": 10
+    },
+    {
+      "towerIDList": [ 1, 4, 5 ],
+      "towerIDListLength": 3,
+      "isAllClear": false,
+      "carrotState": 0,
+      "mapID": 5,
+      "levelID": 3,
+      "isUnlocked": false,
+      "isRewardLevel": true,
+      "waveNum": 10
+    }
+  ],
+  "unlockedeNormalModeMapNum": [ 1, 0, 0 ],
+  "cookies": 100,
+  "milk": 100,
+  "nest": 1,
+  "diamands": 10,
+  "monsterPetDataList": [
+    {
+      "monsterLevel": 1,
+      "remainCookies": 0,
+      "remainMilk": 0,
+      "monsterID": 1
+    }
+  ]
+}

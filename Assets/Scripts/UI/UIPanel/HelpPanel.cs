@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HelpPanel : BasePanel
 {
@@ -14,6 +15,8 @@ public class HelpPanel : BasePanel
 
     // 主页进入动画
     private Tween enterTween;
+    private ScrollViewExtend scvHelp;
+    private ScrollViewExtend scvTower;
 
     protected override void Awake()
     {
@@ -24,6 +27,9 @@ public class HelpPanel : BasePanel
         towerPageGo = transform.Find("TowerPage").gameObject;
         // 初始化动画
         enterTween = transform.DOLocalMoveX(0, 0.5f).SetAutoKill(false).Pause();
+        // 初始化组件
+        scvHelp = transform.Find("HelpPage").Find("Scroll View").GetComponent<ScrollViewExtend>();
+        scvTower = transform.Find("TowerPage").Find("Scroll View").GetComponent<ScrollViewExtend>();
     }
 
     public override void InitPanel()
@@ -34,6 +40,8 @@ public class HelpPanel : BasePanel
 
     public override void EnterPanel()
     {
+        scvHelp.Init();
+        scvTower.Init();
         ShowHelpPage();
         MoveToCenter();
     }
@@ -41,8 +49,15 @@ public class HelpPanel : BasePanel
     public override void ExitPanel()
     {
         uiManager.PlayButtonAudioClip();
-        enterTween.PlayBackwards();
-        uiManager.currentScenePanelDict[StringManager.MainPanel].GetComponent<BasePanel>().EnterPanel();
+        if (uiManager.currentSceneState.GetType() == typeof(NormalModeOptionSceneState))
+        {
+            uiManager.ChangeSceneState(new MainSceneState(uiManager));
+            SceneManager.LoadScene(1);
+        } else
+        {
+            enterTween.PlayBackwards();
+            uiManager.currentScenePanelDict[StringManager.MainPanel].GetComponent<BasePanel>().EnterPanel();
+        }
         InitPanel();
     }
 

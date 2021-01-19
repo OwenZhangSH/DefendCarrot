@@ -144,4 +144,24 @@ public class UIManager
         GameManager.instance.audioManager.PlayPagingAudioClip();
     }
 
+    ///
+    /// 资源获取
+    ///
+    public Sprite GetSprite(string resourcePath)
+    {
+        return GameManager.instance.GetSprite(resourcePath);
+    }
+
+    //获取游戏物体
+    public GameObject GetGameObjectResource(FactoryType factoryType, string resourcePath)
+    {
+        return GameManager.instance.GetGameObjectResource(factoryType, resourcePath);
+    }
+
+    //将游戏物体放回对象池
+    public void PushGameObjectToFactory(FactoryType factoryType, string resourcePath, GameObject itemGo)
+    {
+        GameManager.instance.PushGameObjectToFactory(factoryType, resourcePath, itemGo);
+    }
+
 }
