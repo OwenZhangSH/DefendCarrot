@@ -22,6 +22,10 @@ public class NormalModeOptionSceneState : BaseSceneState
 
     public override void ExitScene()
     {
+        if (uiManager.currentSceneState.GetType() == typeof(NormalModeSceneState))
+            SceneManager.LoadScene(4);
+        else
+            SceneManager.LoadScene(1);
         base.ExitScene();
     }
 }

@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
     private CareTaker ct;
     public bool initPlayerManager;//是否重置游戏
 
+    public Map currentMap;
+
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);

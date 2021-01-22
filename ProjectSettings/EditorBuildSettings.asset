@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BossModeOptionScene.unity
     guid: fb978fc9dee0990438164a372dfd79a8
+  - enabled: 1
+    path: Assets/Scenes/NormalModeScene.unity
+    guid: 649514b6f88206740abcae0e1bf3782e
   m_configObjects: {}

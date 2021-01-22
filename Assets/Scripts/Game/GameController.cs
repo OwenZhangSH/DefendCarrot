@@ -7,6 +7,23 @@ using UnityEngine;
 /// </summary>
 public class GameController : MonoBehaviour
 {
+    // 单例
+    private static GameController _instance;
+    public static GameController instance
+    {
+        get
+        {
+            return _instance;
+        }
+    }
+    // 游戏属性
+    public int gameSpeed;
+    public bool isPause;
+
+    private void Awake()
+    {
+        _instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {

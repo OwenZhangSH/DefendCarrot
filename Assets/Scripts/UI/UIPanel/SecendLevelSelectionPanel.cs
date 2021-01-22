@@ -198,11 +198,13 @@ public class SecendLevelSelectionPanel : BasePanel
     // 进入游戏
     public void ToGamePanel()
     {
-        // TODO: 进入游戏
+        uiManager.PlayButtonAudioClip();
+        GameManager.instance.currentMap = playerManager.unlockedNormalModeMapList[(currentLevelID - 1) * 5 + currentMapID];
+        uiManager.currentScenePanelDict[StringManager.GameLoadPanel].GetComponent<BasePanel>().EnterPanel();
+        uiManager.ChangeSceneState(new NormalModeSceneState(uiManager));
     }
 
     // 当移动发生后的触发函数
-    // TODO: 完成
     public void OnPageChange(int pageNum)
     {
         currentMapID = pageNum;

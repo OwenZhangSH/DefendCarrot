@@ -20,10 +20,9 @@ public class StringManager
     public const string LevelSelectionPanel = "LevelSelectionPanel";
     public const string SecendLevelSelectionPanel = "SecendLevelSelectionPanel";
     public const string LevelResourceRoot = "GameOption/Normal/Level/";
-
     public const string GameBossOptionPanel = "GameBossOptionPanel";
-
     public const string NormalModePanel = "NormalModePanel";
+
     public const string BossModelPanel = "BossModelPanel";
     public const string MonsterNestPanel = "MonsterNestPanel";
 
