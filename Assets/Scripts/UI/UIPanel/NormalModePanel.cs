@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class NormalModePanel : BasePanel
 {
@@ -20,6 +21,12 @@ public class NormalModePanel : BasePanel
     public GameObject playingGO;
     // 菜单
     public GameObject menuPageGO;
+    // GameOver 
+    public GameObject gameOverPageGO;
+    // GameWin
+    public GameObject gameWinPageGO;
+    // PrizePage
+    public GameObject prizePageGO;
     protected override void Awake()
     {
         base.Awake();
@@ -46,33 +53,43 @@ public class NormalModePanel : BasePanel
     public void ChangeGameSpeed()
     {
         uiManager.PlayButtonAudioClip();
-        isNormalSpeed = !isNormalSpeed;
+        GameController.instance.ChangeGameSpeed();
+    }
+    
+    public void UpdateGameSpeedUI()
+    {
+        isNormalSpeed = GameController.instance.gameSpeed == 1? true:false;
         if (isNormalSpeed)
         {
-            GameController.instance.gameSpeed = 1;
             gameSpeedBtn.sprite = gameSpeedSprites[0];
-        } else
+        }
+        else
         {
-            GameController.instance.gameSpeed = 2;
             gameSpeedBtn.sprite = gameSpeedSprites[1];
         }
-
     }
     // 游戏暂停
     public void PauseGame()
     {
         uiManager.PlayButtonAudioClip();
-        isPause = !isPause;
+        isPause = GameController.instance.isPause;
+        if (!isPause)
+            GameController.instance.PauseGame();
+        else
+            GameController.instance.ContinueGame();
+    }
+
+    public void UpdatePauseGameUI()
+    {
+        isPause = GameController.instance.isPause;
         if (isPause)
         {
-            GameController.instance.isPause = true;
             gamePauseBtn.sprite = gamePauseSprites[1];
             pauseGO.SetActive(true);
             playingGO.SetActive(false);
         }
         else
         {
-            GameController.instance.isPause = false;
             gamePauseBtn.sprite = gamePauseSprites[0];
             pauseGO.SetActive(false);
             playingGO.SetActive(true);
@@ -84,11 +101,49 @@ public class NormalModePanel : BasePanel
     {
         // 暂停游戏
         uiManager.PlayButtonAudioClip();
-        isPause = true;
-        GameController.instance.isPause = true;
-        gamePauseBtn.sprite = gamePauseSprites[1];
-        pauseGO.SetActive(true);
-        playingGO.SetActive(false);
+        GameController.instance.PauseGame();
         menuPageGO.SetActive(true);
+    }
+    
+    // 继续游戏
+    public void Continue()
+    {
+        uiManager.PlayButtonAudioClip();
+        GameController.instance.ContinueGame();
+        menuPageGO.SetActive(false);
+    }
+
+    // 重新开始
+    public void Restart()
+    {
+        uiManager.PlayButtonAudioClip();
+        GameController.instance.RestartGame();
+    }
+    
+    // 初始化UI
+    public void InitUI()
+    {
+        gameOverPageGO.SetActive(false);
+        gameWinPageGO.SetActive(false);
+        menuPageGO.SetActive(false);
+        gameObject.SetActive(false);
+        UpdatePauseGameUI();
+        UpdateGameSpeedUI();
+    }
+
+    // 选择关卡
+    public void ChooseOtherLevel()
+    {
+        uiManager.PlayButtonAudioClip();
+        GameController.instance.ToOtherLevel();
+        uiManager.ChangeSceneState(new NormalModeOptionSceneState(uiManager));
+    }
+    
+    // 关闭奖励页面
+    public void ClosePrizePage()
+    {
+        uiManager.PlayButtonAudioClip();
+        GameController.instance.ContinueGame();
+        prizePageGO.SetActive(false);
     }
 }
