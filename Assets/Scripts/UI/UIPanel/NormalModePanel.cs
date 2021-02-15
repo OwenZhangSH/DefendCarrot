@@ -27,6 +27,14 @@ public class NormalModePanel : BasePanel
     public GameObject gameWinPageGO;
     // PrizePage
     public GameObject prizePageGO;
+    // StartUI
+    public GameObject startGameUI;
+    // Final Wave UI
+    public GameObject finalWaveUI;
+    // 金币
+    public Text coinText;
+    public Text currenWaveText;
+    public Text totalWaveText;
     protected override void Awake()
     {
         base.Awake();
@@ -35,6 +43,8 @@ public class NormalModePanel : BasePanel
     public override void EnterPanel()
     {
         base.EnterPanel();
+        InitUI();
+        gameObject.SetActive(true);
     }
 
     public override void ExitPanel()
@@ -127,8 +137,15 @@ public class NormalModePanel : BasePanel
         gameWinPageGO.SetActive(false);
         menuPageGO.SetActive(false);
         gameObject.SetActive(false);
+    }
+
+    public void UpdateUI()
+    {
         UpdatePauseGameUI();
         UpdateGameSpeedUI();
+        UpdateCoinUI();
+        updateTotalWaveUI();
+        UpdateWaveUI();
     }
 
     // 选择关卡
@@ -145,5 +162,79 @@ public class NormalModePanel : BasePanel
         uiManager.PlayButtonAudioClip();
         GameController.instance.ContinueGame();
         prizePageGO.SetActive(false);
+    }
+
+    // 更新金币UI
+    public void UpdateCoinUI()
+    {
+        coinText.text = GameController.instance.coin.ToString();
+    }
+    // 更新回合UI
+    public void UpdateWaveUI()
+    {
+        int first = 0;
+        int second = 0;
+        int currentWave = GameController.instance.level.currentWave + 1;
+        if (currentWave >= 10)
+        {
+            second = currentWave % 10;
+            first = currentWave / 10;
+        } else
+        {
+            second = currentWave;
+        }
+        currenWaveText.text = first.ToString() + " " + second.ToString();
+    }
+
+    // 更新总回合UI
+    public void updateTotalWaveUI()
+    {
+        totalWaveText.text = GameController.instance.level.totalWaveNum.ToString();
+    }
+
+    // 开始加载游戏
+    public void ShowStartAnim()
+    {
+        startGameUI.SetActive(true);
+        InvokeRepeating("PlayAudio", 0.5f, 1);
+    }
+
+    private void PlayAudio()
+    {
+        GameController.instance.PlayEffectMusic("NormalMordel/CountDown");
+    }
+
+    public void CloseStartUI()
+    {
+        startGameUI.SetActive(false);
+        CancelInvoke();
+    }
+
+    public void ShowFinalWaveUI()
+    {
+        finalWaveUI.SetActive(true);
+        Invoke("CloseFinalWaveUI", 0.508f);
+    }
+
+    public void CloseFinalWaveUI()
+    {
+        finalWaveUI.SetActive(false);
+        GameController.instance.level.HandleLastWave();
+    }
+    // 胜利页面
+    public void ShowWinPage()
+    {
+        gameWinPageGO.SetActive(true);
+    }
+    // 失败页面
+    public void ShowLosePage()
+    {
+        gameOverPageGO.SetActive(true);
+    }
+
+    // prize页面
+    public void ShowPrizePage()
+    {
+        prizePageGO.SetActive(true);
     }
 }

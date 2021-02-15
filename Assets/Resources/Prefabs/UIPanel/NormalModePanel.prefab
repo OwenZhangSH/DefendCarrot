@@ -1115,6 +1115,7 @@ GameObject:
   - component: {fileID: 7062392081638138555}
   - component: {fileID: 7062392081638138553}
   - component: {fileID: 7062392081638138554}
+  - component: {fileID: 5972851019762216447}
   m_Layer: 5
   m_Name: GameOverPage
   m_TagString: Untagged
@@ -1187,6 +1188,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5972851019762216447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7062392081638138500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca21119791c2002469d58aaff21ebe83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7062392081666656949
 GameObject:
   m_ObjectHideFlags: 0
@@ -1356,6 +1369,8 @@ GameObject:
   - component: {fileID: 7062392081876395253}
   - component: {fileID: 7062392081876395243}
   - component: {fileID: 7062392081876395252}
+  - component: {fileID: 5281531226773759159}
+  - component: {fileID: 5730982276468471822}
   m_Layer: 5
   m_Name: PrizePage
   m_TagString: Untagged
@@ -1424,6 +1439,37 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5281531226773759159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7062392081876395254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 142d65d0ac9adf546a8ed89ad8421d9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &5730982276468471822
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7062392081876395254}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: beae210813aaa4a4686d1df37d158c14, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7062392081876460329
 GameObject:
   m_ObjectHideFlags: 0
@@ -1435,6 +1481,7 @@ GameObject:
   - component: {fileID: 7062392081876460328}
   - component: {fileID: 7062392081876460334}
   - component: {fileID: 7062392081876460335}
+  - component: {fileID: 3239128142478688736}
   m_Layer: 5
   m_Name: GameWinPage
   m_TagString: Untagged
@@ -1508,6 +1555,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3239128142478688736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7062392081876460329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9f61669952a03141a2337974ae6d0be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carrotSprites: []
 --- !u!1 &7062392081878920895
 GameObject:
   m_ObjectHideFlags: 0
@@ -2252,9 +2312,14 @@ MonoBehaviour:
   pauseGO: {fileID: 7062392081293612120}
   playingGO: {fileID: 7062392082084721703}
   menuPageGO: {fileID: 7062392082950155008}
-  gameOverPageGO: {fileID: 0}
-  gameWinPageGO: {fileID: 0}
-  prizePageGO: {fileID: 0}
+  gameOverPageGO: {fileID: 7062392081638138500}
+  gameWinPageGO: {fileID: 7062392081876460329}
+  prizePageGO: {fileID: 7062392081876395254}
+  startGameUI: {fileID: 7062392083161875046}
+  finalWaveUI: {fileID: 7062392082059404459}
+  coinText: {fileID: 7062392083095409957}
+  currenWaveText: {fileID: 7062392083189420832}
+  totalWaveText: {fileID: 7062392082698888146}
 --- !u!1 &7062392082320041923
 GameObject:
   m_ObjectHideFlags: 0

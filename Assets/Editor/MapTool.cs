@@ -5,6 +5,7 @@ using UnityEditor;
 using System.IO;
 using System;
 
+#if Tool
 [CustomEditor(typeof(MapMaker))]
 public class MapTool : Editor
 {
@@ -102,3 +103,4 @@ public class MapTool : Editor
         return list;
     }
 }
+#endif

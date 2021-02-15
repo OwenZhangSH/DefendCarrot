@@ -6,10 +6,12 @@ using LitJson;
 
 public class MapMaker : MonoBehaviour
 {
+#if Tool
     public bool drawLine;
     public GameObject gridGO;
     private static MapMaker _instance;
     public static MapMaker Instance { get => _instance; }
+#endif
     // 游戏属性
     // 地图
     private float mapWidth;
@@ -30,7 +32,9 @@ public class MapMaker : MonoBehaviour
     public int mapID;
 
     // 路径
+    [HideInInspector]
     public List<GridPoint.GridIndex> monsterPath;
+    [HideInInspector]
     public List<Vector3> monsterPathPos;
     // 格子对象
     public GridPoint[,] gridPoints;
@@ -40,22 +44,17 @@ public class MapMaker : MonoBehaviour
     // 背景
     private SpriteRenderer bgSR;
     private SpriteRenderer roadSR;
+
+    // 萝卜
+    [HideInInspector]
+    public Carrot carrot;
+
     private void Awake()
     {
+#if Tool
         _instance = this;
-        //InitMapMaker();
-    }
-    // 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        InitMapMaker();
+#endif
     }
 
     // 初始化地图
@@ -69,7 +68,12 @@ public class MapMaker : MonoBehaviour
         {
             for (int y = 0; y < yRow; y++)
             {
+#if Tool
                 GameObject itemGO = Instantiate(gridGO, transform.position, transform.rotation);
+#endif
+#if Game
+                GameObject itemGO = GameController.instance.GetGameObjectResource("Grid");
+#endif
                 itemGO.transform.SetParent(transform);
                 itemGO.transform.position = 
                     new Vector3(
@@ -105,9 +109,24 @@ public class MapMaker : MonoBehaviour
         levelID = level;
         mapID = map;
         UpdateMapFromLevelInfo(LoadLevelInfo(levelID.ToString() + "_" + mapID.ToString() + ".json"));
+        monsterPathPos = new List<Vector3>();
+        for (int i = 0; i < monsterPath.Count; i++)
+        {
+            monsterPathPos.Add(gridPoints[monsterPath[i].xIndex, monsterPath[i].yIndex].transform.position);
+        }
 
+        //起始点与终止点
+        GameObject startPointGo = GameController.instance.GetGameObjectResource("startPoint");
+        startPointGo.transform.position = monsterPathPos[0];
+        startPointGo.transform.SetParent(transform);
+
+        GameObject endPointGo = GameController.instance.GetGameObjectResource("Carrot");
+        endPointGo.transform.position = monsterPathPos[monsterPathPos.Count - 1] - new Vector3(0, 0, 1);
+        endPointGo.transform.SetParent(transform);
+        carrot = endPointGo.GetComponent<Carrot>();
     }
 
+#if Tool
     private void OnDrawGizmos()
     {
         if (!drawLine) return;
@@ -128,7 +147,7 @@ public class MapMaker : MonoBehaviour
             Gizmos.DrawLine(startPos, endPos);
         }
     }
-
+#endif
     /// <summary>
     /// 地图编辑相关
     /// </summary>
@@ -180,7 +199,6 @@ public class MapMaker : MonoBehaviour
     // 读取Level Info
     public LevelInfo LoadLevelInfo(string fileName)
     {
-        Debug.Log(fileName);
         LevelInfo levelInfo = new LevelInfo();
         string filePath = Application.streamingAssetsPath + "/Json/Level/" + fileName;
         if (File.Exists(filePath))
@@ -204,10 +222,7 @@ public class MapMaker : MonoBehaviour
         {
             for (int y = 0; y < yRow; y++)
             {
-                Debug.Log(gridPoints[x, y]);
-                Debug.Log(levelInfo.gridPoints);
                 gridPoints[x, y].gridState = levelInfo.gridPoints[y + x * yRow];
-                Debug.Log(levelInfo.gridPoints[y + x * yRow]);
                 // 格子更新
                 gridPoints[x, y].UpdateGrid();
             }
@@ -222,6 +237,7 @@ public class MapMaker : MonoBehaviour
         waveInfoList.Clear();
         for (int i = 0; i < levelInfo.waveInfo.Count; i++)
         {
+
             waveInfoList.Add(levelInfo.waveInfo[i]);
         }
         bgSR.sprite = Resources.Load<Sprite>("Pictures/NormalMordel/Game/" + levelID.ToString() + "/" + "BG" + 

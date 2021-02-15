@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NormalModeScene.unity
     guid: 649514b6f88206740abcae0e1bf3782e
+  - enabled: 1
+    path: Assets/Scenes/Test.unity
+    guid: 1f7e566ede6d3dc4fa2218f417abc0cc
+  - enabled: 1
+    path: Assets/Scenes/MonsterNestScene.unity
+    guid: b08666e388b34a04d9d2a6fe51754f08
   m_configObjects: {}

@@ -75,6 +75,16 @@ public class GameManager : MonoBehaviour
     {
         return assetManager.spritesFactory.GetSingleResources(path);
     }
+    public RuntimeAnimatorController GetRunTimeAnimatorController(string resourcePath)
+    {
+        return assetManager.runtimeAnimatorControllerFactory.GetSingleResources(resourcePath);
+    }
+    //获取audioClip资源
+    public AudioClip GetAudioClip(string resourcePath)
+    {
+        return assetManager.audioClipsFactory.GetSingleResources(resourcePath);
+    }
+
 
     // playerManager 相关方法
     public void SaveData()
